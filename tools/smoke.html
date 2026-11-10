@@ -1,0 +1,29 @@
+<!doctype html>
+<!-- Dev helper: loads DEMO data (made-up name/marks/logs) into this browser, then opens the app.
+     Open http://localhost:8765/tools/smoke.html?view=race . It overwrites local Pit Wall data, so use it only for testing. -->
+<meta charset="utf-8"><title>Pit Wall smoke</title>
+<script type="module">
+  import * as store from "../js/store.js";
+  import { addDays, dayKey } from "../js/util.js";
+  const q = new URLSearchParams(location.search);
+  const today = dayKey();
+  const s = store.createInitial({ name: "Demo", raceNumber: "44", hours: { weekday: 3, saturday: 6, sunday: 6 },
+    baseline: { maths: 72.5, science: 87.5, english: 93.75, malayalam: 88.75, sst: 85 } });
+  store.update((st) => {
+    st.createdAt = addDays(today, -20);
+    const m = st.subjects.find((x) => x.id === "maths");
+    m.chapters[0].status = "done"; m.chapters[1].status = "done"; m.chapters[2].status = "flying"; m.chapters[5].status = "outlap";
+    st.subjects.find((x) => x.id === "sst").chapters.slice(0, 4).forEach((c) => (c.status = "done"));
+    const pick = [["maths", 2], ["maths", 5], ["science", 0], ["sst", 1], ["english", 4]];
+    for (let i = 20; i >= 1; i--) {
+      if (i % 6 === 0) continue; // a few missed days
+      const [sid, ci] = pick[i % pick.length];
+      const ch = st.subjects.find((x) => x.id === sid).chapters[ci];
+      st.logs.push({ id: "demo" + i, date: addDays(today, -i), subjectId: sid, chapterId: ch.id, minutes: 60 + (i * 17) % 120, type: "learn", ts: i });
+    }
+    if (q.get("weak") === "1") { st.logs = st.logs.filter((l) => l.date !== addDays(today, -1) && l.date !== addDays(today, -2)); }
+    st.logs.push({ id: "demoT", date: today, subjectId: "maths", chapterId: m.chapters[2].id, minutes: 50, type: "practice", ts: 99 });
+    st.overrides.push({ date: addDays(today, 5), hours: 0, reason: "sick", note: "demo" });
+  });
+  location.replace("../index.html#" + (q.get("view") || "race"));
+</script>

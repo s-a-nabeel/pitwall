@@ -1,0 +1,62 @@
+<!doctype html>
+<!-- Dev helper: drives the real app in an iframe (click → assert). Run after tools/smoke.html has seeded demo data.
+     Results are printed into #out (read with headless Chrome --dump-dom). ?stop=<step> leaves the UI at that step for a screenshot. -->
+<meta charset="utf-8"><title>Pit Wall click test</title>
+<style>body{margin:0;background:#000;color:#0f0;font:12px monospace} iframe{width:500px;height:1400px;border:0;display:block}</style>
+<iframe id="f" src="../index.html#race"></iframe>
+<pre id="out">running…</pre>
+<script>
+const out = [], q = new URLSearchParams(location.search), stop = q.get("stop");
+const wait = (ms) => new Promise((r) => setTimeout(r, ms));
+const log = (ok, m) => out.push((ok ? "PASS " : "FAIL ") + m);
+document.getElementById("f").onload = async () => {
+  const w = document.getElementById("f").contentWindow, d = w.document;
+  const $ = (s) => d.querySelector(s);
+  const state = () => JSON.parse(w.localStorage.getItem("pitwall.v1"));
+  try {
+    await wait(400);
+    const logs0 = state().logs.length;
+    const deltaText0 = $(".count .mid").textContent;
+    $('[data-action="log.open"][data-chapter]').click(); await wait(150);
+    log(!$("#sheet-root").hidden, "Log sheet opens from a stint");
+    if (stop === "log") return finish();
+    [...d.querySelectorAll('[data-action="log.minutes"]')].find((b) => b.dataset.v === "60").click(); await wait(50);
+    $('[data-action="log.status"][data-v="done"]').click(); await wait(50);
+    $('[data-action="log.save"]').click(); await wait(250);
+    log(state().logs.length === logs0 + 1, "Saving adds a log");
+    log($("#sheet-root").hidden, "Sheet closes after save");
+    log($(".count .mid").textContent !== deltaText0, `Delta updates (${deltaText0} → ${$(".count .mid").textContent})`);
+    // strategy: change weekday hours
+    w.location.hash = "#strategy"; await wait(250);
+    const sl = $('input[data-k="weekday"]'); sl.value = "5"; sl.dispatchEvent(new Event("change", { bubbles: true })); await wait(200);
+    log(state().settings.hours.weekday === 5, "Weekday slider commits 5h");
+    // calendar: open a day and set Safety Car
+    w.location.hash = "#calendar"; await wait(250);
+    const days = d.querySelectorAll('.cal .d:not(.past):not(.exam)'); days[3].click(); await wait(150);
+    log(!$("#sheet-root").hidden, "Day sheet opens");
+    if (stop === "day") return finish();
+    $('[data-action="cal.save"]').click(); await wait(200);
+    log(state().overrides.length >= 2, "Override saved");
+    // sectors: edit a chapter
+    w.location.hash = "#sectors/science"; await wait(250);
+    $('[data-action="sec.editChapter"]').click(); await wait(150);
+    log(!$("#sheet-root").hidden, "Chapter editor opens");
+    if (stop === "chapter") return finish();
+    $('[data-action="sec.compound"][data-v="hard"]').click(); await wait(50);
+    $('[data-action="sec.saveChapter"]').click(); await wait(200);
+    log(state().subjects.find((s) => s.id === "science").chapters[0].compound === "hard", "Chapter compound saved");
+    // share sheet
+    w.location.hash = "#race"; await wait(250);
+    $('[data-action="share.open"]').click(); await wait(150);
+    log(/PIT WALL/.test($(".sheet pre").textContent), "WhatsApp summary renders");
+    if (stop === "share") return finish();
+    $('[data-action="sheet.close"]').click(); await wait(100);
+    for (const v of ["race", "sectors", "calendar", "telemetry", "strategy"]) {
+      w.location.hash = "#" + v; await wait(200);
+      log(!!$("main") && $("main").children.length > 0, `View ${v} renders`);
+    }
+  } catch (e) { log(false, "EXCEPTION " + e.message + "\n" + e.stack); }
+  finish();
+};
+function finish() { document.getElementById("out").textContent = out.join("\n") + "\nDONE"; }
+</script>

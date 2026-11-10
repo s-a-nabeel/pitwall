@@ -1,0 +1,16 @@
+{
+  "name": "Pit Wall: CBSE X Race Strategy",
+  "short_name": "Pit Wall",
+  "description": "Board exam 2027 study strategy tracker, F1 style.",
+  "start_url": "./#race",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#15151E",
+  "theme_color": "#15151E",
+  "icons": [
+    { "src": "icons/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any maskable" },
+    { "src": "icons/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any maskable" },
+    { "src": "icons/icon.svg", "sizes": "any", "type": "image/svg+xml" }
+  ]
+}

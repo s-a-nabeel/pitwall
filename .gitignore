@@ -1,0 +1,18 @@
+# Personal data: never publish (the GitHub Pages repo is public)
+xplanner-prompt.yaml
+wireframe.html
+IMG_*.heif
+*.heif
+context-prompt_v2.yaml
+
+# Source PDFs (large; public anyway, not needed by the app)
+*.pdf
+
+# Local backups exported from the app
+pitwall-*.json
+
+# OS / editor
+.DS_Store
+Thumbs.db
+.vscode/
+__pycache__/

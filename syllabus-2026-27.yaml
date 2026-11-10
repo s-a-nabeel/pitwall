@@ -1,0 +1,193 @@
+# syllabus-2026-27.yaml — seed syllabus for PIT WALL (CBSE Class X, board exam Feb–Mar 2027).
+# Source: official CBSE curriculum 2026-27, https://cbseacademic.nic.in/curriculum_2027.html
+# (subject PDFs read on 2026-11-10). Chapter names follow the NCERT / SCERT textbooks.
+#
+# board:  true     → in the year-end board paper (plan + track)
+#         partial  → only the listed subtopics are in the board paper
+#         internal → taught and assessed internally only (portfolio/periodic/project); NOT in the board paper
+#         false    → excluded ("questions will not be asked")
+# compound: suggested difficulty (soft / medium / hard). Editable in the app; it drives the default hours.
+# The app plans ONLY board: true|partial. internal/false items are shown greyed, so he knows to skip them.
+
+meta:
+  session: "2026-27"
+  exam_start: 2027-02-16
+  verified: "All five board subjects are taken from the official CBSE 2026-27 PDFs."
+  marks_split: "Theory 80 + Internal 20 in each board subject"
+  board_subjects: "Maths (Standard 041), Science (086), English L&L (184), Malayalam (012), Social Science (087): confirmed by parent 2026-11-10"
+
+subjects:
+
+  - id: maths
+    name: Mathematics
+    code: "041 Mathematics STANDARD (confirmed)"
+    exam: 2027-02-17
+    units:
+      - {unit: "Number Systems", marks: 6}
+      - {unit: "Algebra", marks: 20}
+      - {unit: "Coordinate Geometry", marks: 6}
+      - {unit: "Geometry", marks: 15}
+      - {unit: "Trigonometry", marks: 12}
+      - {unit: "Mensuration", marks: 10}
+      - {unit: "Statistics & Probability", marks: 11}
+    chapters:
+      - {n: 1,  name: "Real Numbers",                         unit: "Number Systems",       compound: soft,   board: true}
+      - {n: 2,  name: "Polynomials",                          unit: "Algebra",              compound: soft,   board: true}
+      - {n: 3,  name: "Pair of Linear Equations in Two Variables", unit: "Algebra",         compound: medium, board: true, note: "graphical, substitution, elimination (no cross-multiplication)"}
+      - {n: 4,  name: "Quadratic Equations",                  unit: "Algebra",              compound: medium, board: true, note: "factorisation + quadratic formula, nature of roots"}
+      - {n: 5,  name: "Arithmetic Progressions",              unit: "Algebra",              compound: medium, board: true}
+      - {n: 6,  name: "Triangles",                            unit: "Geometry",             compound: hard,   board: true, note: "prove BPT; similarity criteria stated without proof"}
+      - {n: 7,  name: "Coordinate Geometry",                  unit: "Coordinate Geometry",  compound: soft,   board: true, note: "distance + section formula (internal division)"}
+      - {n: 8,  name: "Introduction to Trigonometry",         unit: "Trigonometry",         compound: hard,   board: true, note: "ratios, standard angles, identities (sin²A+cos²A=1)"}
+      - {n: 9,  name: "Some Applications of Trigonometry",    unit: "Trigonometry",         compound: medium, board: true, note: "heights & distances, ≤2 right triangles, angles 30/45/60 only"}
+      - {n: 10, name: "Circles",                              unit: "Geometry",             compound: medium, board: true, note: "two tangent theorems (prove)"}
+      - {n: 11, name: "Areas Related to Circles",             unit: "Mensuration",          compound: medium, board: true, note: "sector/segment, central angle 60/90/120 only"}
+      - {n: 12, name: "Surface Areas and Volumes",            unit: "Mensuration",          compound: hard,   board: true, note: "combinations of any two solids"}
+      - {n: 13, name: "Statistics",                           unit: "Statistics & Probability", compound: medium, board: true, note: "grouped mean (direct, assumed, step-deviation), median, mode"}
+      - {n: 14, name: "Probability",                          unit: "Statistics & Probability", compound: soft,   board: true}
+
+  - id: science
+    name: Science
+    code: "086"
+    exam: 2027-02-22
+    units:
+      - {unit: "Chemical Substances – Nature and Behaviour", marks: 25}
+      - {unit: "World of Living", marks: 25}
+      - {unit: "Natural Phenomena", marks: 12}
+      - {unit: "Effects of Current", marks: 13}
+      - {unit: "Natural Resources", marks: 5}
+    chapters:
+      - {name: "Chemical Reactions and Equations",      unit: "Chemical Substances", compound: medium, board: true}
+      - {name: "Acids, Bases and Salts",                unit: "Chemical Substances", compound: medium, board: true}
+      - {name: "Metals and Non-metals",                 unit: "Chemical Substances", compound: medium, board: true}
+      - {name: "Carbon and its Compounds",              unit: "Chemical Substances", compound: hard,   board: true}
+      - {name: "Periodic Classification of Elements",   unit: "Chemical Substances", compound: soft,   board: internal, note: "formative only"}
+      - {name: "Life Processes",                        unit: "World of Living",     compound: hard,   board: true}
+      - {name: "Control and Coordination",              unit: "World of Living",     compound: medium, board: true}
+      - {name: "How do Organisms Reproduce?",           unit: "World of Living",     compound: medium, board: true}
+      - {name: "Heredity",                              unit: "World of Living",     compound: medium, board: true, note: "⚠ PDF conflict: the syllabus lists Heredity as assessed, but the teacher note says 'Heredity and Evolution will not be assessed'. Keep it in the plan and confirm with the school."}
+      - {name: "Evolution (part of Heredity chapter)",  unit: "World of Living",     compound: soft,   board: internal, note: "formative only"}
+      - {name: "Light – Reflection and Refraction",     unit: "Natural Phenomena",   compound: hard,   board: true, note: "mirror/lens formula, no derivation"}
+      - {name: "The Human Eye and the Colourful World", unit: "Natural Phenomena",   compound: medium, board: true, note: "excludes colour of sun at sunrise/sunset"}
+      - {name: "Electricity",                           unit: "Effects of Current",  compound: hard,   board: true}
+      - {name: "Magnetic Effects of Electric Current",  unit: "Effects of Current",  compound: medium, board: partial, note: "Motor, Electromagnetic Induction and Generator are formative only; field lines, solenoid, Fleming's LHR, AC/DC and domestic circuits are in the board paper"}
+      - {name: "Our Environment",                       unit: "Natural Resources",   compound: soft,   board: true}
+    practicals: "14 experiments (pH, reaction types, reactivity, V-I graph, resistors, stomata, CO2 respiration, acetic acid, soap, focal length, glass slab, fission/budding, prism, dicot embryo). Internal 5 marks, but they are also asked in the theory paper; track as one chapter 'Practicals revision'."
+
+  - id: english
+    name: English Language & Literature
+    code: "184"
+    exam: 2027-02-26
+    units:
+      - {unit: "Reading (2 unseen passages)", marks: 20}
+      - {unit: "Grammar", marks: 10}
+      - {unit: "Writing (formal letter, analytical paragraph)", marks: 10}
+      - {unit: "Literature – First Flight + Footprints", marks: 40}
+    chapters:
+      # Skills (practice-type: track as repeat practice sets, not 'done once')
+      - {name: "Reading – discursive + case-based passages", unit: Reading, compound: medium, board: true, kind: skill}
+      - {name: "Grammar – Determiners, Tenses, Modals, Subject-verb concord, Reported speech", unit: Grammar, compound: medium, board: true, kind: skill}
+      - {name: "Writing – Formal Letter",          unit: Writing, compound: soft,   board: true, kind: skill}
+      - {name: "Writing – Analytical Paragraph",   unit: Writing, compound: medium, board: true, kind: skill}
+      # First Flight: prose
+      - {name: "A Letter to God",                        unit: "First Flight prose", compound: soft,   board: true}
+      - {name: "Nelson Mandela: Long Walk to Freedom",   unit: "First Flight prose", compound: medium, board: true}
+      - {name: "Two Stories About Flying",               unit: "First Flight prose", compound: soft,   board: true}
+      - {name: "From the Diary of Anne Frank",           unit: "First Flight prose", compound: medium, board: true}
+      - {name: "Glimpses of India",                      unit: "First Flight prose", compound: medium, board: true}
+      - {name: "Mijbil the Otter",                       unit: "First Flight prose", compound: soft,   board: true}
+      - {name: "Madam Rides the Bus",                    unit: "First Flight prose", compound: soft,   board: true}
+      - {name: "The Sermon at Benares",                  unit: "First Flight prose", compound: soft,   board: true}
+      - {name: "The Proposal (Play)",                    unit: "First Flight prose", compound: medium, board: true}
+      # First Flight: poems
+      - {name: "Dust of Snow",                 unit: "First Flight poems", compound: soft, board: true}
+      - {name: "Fire and Ice",                 unit: "First Flight poems", compound: soft, board: true}
+      - {name: "A Tiger in the Zoo",           unit: "First Flight poems", compound: soft, board: true}
+      - {name: "How to Tell Wild Animals",     unit: "First Flight poems", compound: soft, board: true}
+      - {name: "The Ball Poem",                unit: "First Flight poems", compound: soft, board: true}
+      - {name: "Amanda!",                      unit: "First Flight poems", compound: soft, board: true}
+      - {name: "The Trees",                    unit: "First Flight poems", compound: medium, board: true}
+      - {name: "Fog",                          unit: "First Flight poems", compound: soft, board: true}
+      - {name: "The Tale of Custard the Dragon", unit: "First Flight poems", compound: soft, board: true}
+      - {name: "For Anne Gregory",             unit: "First Flight poems", compound: soft, board: true}
+      # Footprints without Feet
+      - {name: "A Triumph of Surgery",          unit: Footprints, compound: soft, board: true}
+      - {name: "The Thief's Story",             unit: Footprints, compound: soft, board: true}
+      - {name: "The Midnight Visitor",          unit: Footprints, compound: soft, board: true}
+      - {name: "A Question of Trust",           unit: Footprints, compound: soft, board: true}
+      - {name: "Footprints Without Feet",       unit: Footprints, compound: soft, board: true}
+      - {name: "The Making of a Scientist",     unit: Footprints, compound: soft, board: true}
+      - {name: "The Necklace",                  unit: Footprints, compound: soft, board: true}
+      - {name: "Bholi",                         unit: Footprints, compound: soft, board: true}
+      - {name: "The Book That Saved the Earth", unit: Footprints, compound: soft, board: true}
+    workbook: "Words and Expressions II: Units 1–4 and 7–11 (grammar/writing practice)"
+
+  - id: malayalam
+    name: Malayalam
+    code: "012"
+    exam: 2027-02-27
+    note: "Book: Kerala Padavali Malayalam + Adisthana Padavali, Std X (2025 edition, SCERT Kerala)"
+    units:
+      - {unit: "Reading – unseen passages", marks: 15}
+      - {unit: "Creative writing – essay, letter, news report", marks: 14}
+      - {unit: "Grammar + vocabulary", marks: 15}
+      - {unit: "Literature – prose + poetry", marks: 36}
+    chapters:
+      - {name: "Reading – unseen passages practice",  unit: Reading,  compound: soft,   board: true, kind: skill}
+      - {name: "Essay writing",                       unit: Writing,  compound: medium, board: true, kind: skill}
+      - {name: "Letter writing (application / editor / commercial)", unit: Writing, compound: soft, board: true, kind: skill}
+      - {name: "News report writing",                 unit: Writing,  compound: soft,   board: true, kind: skill}
+      - {name: "Grammar – voice, simple/compound (Angavakyam/Angivakyam), sentence correction", unit: Grammar, compound: medium, board: true, kind: skill}
+      - {name: "Vocabulary building",                 unit: Grammar,  compound: soft,   board: true, kind: skill}
+      - {name: "Prose: Mathrubhasha Nammude Ullulozhukunna Jeeva Nadhi (Prakash Raj)", unit: Prose, compound: medium, board: true}
+      - {name: "Prose: Mannum Manushyanum (T. Padmanabhan)",                          unit: Prose, compound: medium, board: true}
+      - {name: "Prose: Muringamarathoppu (Unnikrishnan Puthoor)",                     unit: Prose, compound: medium, board: true}
+      - {name: "Prose: Charithram Rachicha Nadakam (K. Kelappan)",                    unit: Prose, compound: medium, board: true}
+      - {name: "Prose: Vinjana Bhashayum Vainjanika Samoohavum (C. M. Muraleedharan)", unit: Prose, compound: hard, board: true}
+      - {name: "Poem: Kathakalathi Mohanam (Ezhuthachan)",                            unit: Poetry, compound: hard,   board: true}
+      - {name: "Poem: Batherikkaduthu Malankarayil (P. P. Ramachandran)",             unit: Poetry, compound: medium, board: true}
+      - {name: "Poem: Prayanam (Vayalar Rama Varma)",                                 unit: Poetry, compound: medium, board: true}
+      - {name: "Poem: Vishukani (Vyloppilli Sreedhara Menon)",                        unit: Poetry, compound: medium, board: true}
+      - {name: "Poem: Ente Bhasha (Vallathol Narayana Menon)",                        unit: Poetry, compound: medium, board: true}
+
+  - id: sst
+    name: Social Science
+    code: "087"
+    exam: 2027-03-08
+    units:
+      - {unit: "History", marks: "18 + 2 map"}
+      - {unit: "Geography", marks: "17 + 3 map"}
+      - {unit: "Political Science", marks: 20}
+      - {unit: "Economics", marks: 20}
+    chapters:
+      - {name: "H1 The Rise of Nationalism in Europe",   unit: History, compound: hard,   board: true}
+      - {name: "H2 Nationalism in India",                unit: History, compound: hard,   board: true, note: "+ map: Congress sessions 1920 Calcutta, 1920 Nagpur, 1927 Madras; Kheda, Champaran, Ahmedabad mill; Jallianwala Bagh; Dandi"}
+      - {name: "H3 The Making of a Global World",        unit: History, compound: soft,   board: partial, note: "board: subtopics 1–1.3 only (pre-modern world → conquest, disease and trade); the rest is an internal project"}
+      - {name: "H4 The Age of Industrialisation",        unit: History, compound: medium, board: internal, note: "periodic assessment only"}
+      - {name: "H5 Print Culture and the Modern World",  unit: History, compound: medium, board: true}
+      - {name: "G1 Resources and Development",           unit: Geography, compound: medium, board: true, note: "+ map: major soil types"}
+      - {name: "G2 Forest and Wildlife Resources",       unit: Geography, compound: soft,   board: true}
+      - {name: "G3 Water Resources",                     unit: Geography, compound: soft,   board: true, note: "+ map: 8 dams (Salal, Bhakra Nangal, Tehri, Rana Pratap Sagar, Sardar Sarovar, Hirakud, Nagarjuna Sagar, Tungabhadra)"}
+      - {name: "G4 Agriculture",                         unit: Geography, compound: medium, board: true, note: "+ map: rice/wheat areas, top producers of sugarcane, tea, coffee, rubber, cotton, jute"}
+      - {name: "G5 Minerals and Energy Resources",       unit: Geography, compound: medium, board: true, note: "+ map: iron ore, coal, oil fields, thermal/nuclear plants"}
+      - {name: "G6 Manufacturing Industries",            unit: Geography, compound: medium, board: true, note: "+ map: cotton textile, iron & steel, software parks"}
+      - {name: "G7 Lifelines of National Economy",       unit: Geography, compound: soft,   board: partial, note: "map pointing ONLY: sea ports + international airports"}
+      - {name: "P1 Power-sharing",                       unit: "Political Science", compound: soft,   board: true}
+      - {name: "P2 Federalism",                          unit: "Political Science", compound: medium, board: true}
+      - {name: "P3 Gender, Religion and Caste",          unit: "Political Science", compound: medium, board: true}
+      - {name: "P4 Political Parties",                   unit: "Political Science", compound: medium, board: true}
+      - {name: "P5 Outcomes of Democracy",               unit: "Political Science", compound: soft,   board: true}
+      - {name: "E1 Development",                         unit: Economics, compound: soft,   board: true}
+      - {name: "E2 Sectors of the Indian Economy",       unit: Economics, compound: medium, board: true}
+      - {name: "E3 Money and Credit",                    unit: Economics, compound: medium, board: true}
+      - {name: "E4 Globalisation and the Indian Economy", unit: Economics, compound: soft,  board: partial, note: "board: 'What is Globalisation?' + 'Factors that enabled Globalisation' only"}
+      - {name: "E5 Consumer Rights",                     unit: Economics, compound: soft,   board: internal, note: "project work only"}
+      - {name: "Map work – all History + Geography items", unit: Maps, compound: medium, board: true, kind: skill, note: "5 marks; revise weekly"}
+
+non_board_subjects:   # confirmed: internal assessment only, no board paper for him, so no study plan
+  - {name: Hindi, note: "internal assessment only"}
+  - {name: "Information Technology (402)", note: "internal assessment only"}
+  # The app may list these under 'Internal' as a simple to-do checklist (projects, practical file); excluded from hours and flags.
+
+# Not in the board paper, so don't plan these: Science Periodic Classification, Evolution, Motor/EMI/Generator;
+# SS Age of Industrialisation, Consumer Rights, Global World 2–4.4, Globalisation (rest), Lifelines theory.
